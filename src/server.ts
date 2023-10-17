@@ -4,6 +4,9 @@ import cors from 'cors';
 import { AppDataSource } from "./database/data-source";
 import routers from "./app/routes/routes";
 import swaggerUi from "swagger-ui-express";
+import { config } from 'dotenv'
+
+config()
 
 const swaggerDocument = require('../swagger.json');
 
@@ -22,7 +25,7 @@ app.use(routers);
 AppDataSource.initialize().then(async () => {
     console.log("Database connect success!")
     app.listen(port, () => {
-        console.log("Server running on port 3333");
+        console.log(`Server running on port ${port}`);
     })
 }).catch((error) => {
     console.log("Algo deu errado")
