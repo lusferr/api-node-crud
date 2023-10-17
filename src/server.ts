@@ -3,8 +3,8 @@ import express from "express";
 import cors from 'cors';
 import { AppDataSource } from "./database/data-source";
 import routers from "./app/routes/routes";
-
 import swaggerUi from "swagger-ui-express";
+
 const swaggerDocument = require('../swagger.json');
 
 const app = express();
