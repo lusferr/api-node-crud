@@ -13,6 +13,10 @@ const validate = [
     body('studentClass').isNumeric().withMessage('Esse campo deve ser um número').isInt({ min: 0 }).withMessage('A classe deve ser um número inteiro não negativo').notEmpty().withMessage('Esse campo não pode ser vazio')
 ]
 
+studentRouter.get('/', (req: Request, res: Response) => {
+    res.json('Hello world')
+}) 
+
 //create
 studentRouter.post('/create', validate, async (req: Request, res: Response) => {
         try {
