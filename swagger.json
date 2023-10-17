@@ -1,0 +1,222 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "CRUD de estudantes",
+        "description": "Realizando as operações Create, Read, Update e Delete dos dados de um estudante.",
+        "contact": {
+            "name": "Support",
+            "email": "fer.almeidabr@hotmail.com"
+        }
+    },
+    "paths": {
+        "/student/create": {
+            "post": {
+                "description": "Rota para a criação de um estudante",
+                "requestBody": {
+                    "description": "Dados necessários para o cadastro",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequestStudent"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Estudante criado com sucesso!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseStudent"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Preencha todos os campos obrigatórios"
+                    }
+                }
+            }
+        },
+        "/student/update/{id}": {
+            "put": {
+                "description": "Alteração dos dados de um estudante",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do usuário",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "description": "Dados necessários para o cadastro",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequestStudent"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Estudante alterado com sucesso!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseStudent"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Preencha todos os campos obrigatórios"
+                    },
+                    "404": {
+                        "description": "Estudante não encontrado"
+                    }
+                }
+            }
+        },
+        "/student/all": {
+            "get": {
+                "description": "Todos os estudantes cadastrados",
+                "responses": {
+                    "200": {
+                        "description": "Lista de estudantes!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ResponseStudent"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/student/getOne/{id}": {
+            "get": {
+                "description": "Busca de um estudante por ID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do usuário",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Busca estudante por id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                        "$ref": "#/components/schemas/ResponseStudent"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Estudante não encontrado"
+                    }
+                }
+            }
+        },
+        "/student/delete/{id}": {
+            "delete": {
+                "description": "Deletar dados de um estudante por ID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do usuário",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Dados apagados"
+                    },
+                    "404": {
+                        "description": "Estudante não encontrado"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "RequestStudent": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Nome do aluno"
+                    },
+                    "age": {
+                        "type": "number",
+                        "description": "Idade do aluno"
+                    },
+                    "firstScore": {
+                        "type": "number",
+                        "description": "Primeira nota"
+                    },
+                    "secondScore": {
+                        "type": "number",
+                        "description": "Segunda nota"
+                    },
+                    "teacher": {
+                        "type": "string",
+                        "description": "Nome do professor"
+                    },
+                    "studentClass": {
+                        "type": "number",
+                        "description": "Número da classe do aluno"
+                    }
+                }
+            },
+            "ResponseStudent": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Nome do aluno"
+                    },
+                    "age": {
+                        "type": "number",
+                        "description": "Idade do aluno"
+                    },
+                    "firstScore": {
+                        "type": "number",
+                        "description": "Primeira nota"
+                    },
+                    "secondScore": {
+                        "type": "number",
+                        "description": "Segunda nota"
+                    },
+                    "teacher": {
+                        "type": "string",
+                        "description": "Nome do professor"
+                    },
+                    "studentClass": {
+                        "type": "number",
+                        "description": "Número da classe do aluno"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Id do estudante"
+                    }
+                }
+            }
+        }
+    }
+}
