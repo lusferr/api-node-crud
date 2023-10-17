@@ -33,7 +33,7 @@
                             }
                         }
                     },
-                    "422": {
+                    "400": {
                         "description": "Preencha todos os campos obrigatórios"
                     }
                 }
