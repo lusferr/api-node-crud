@@ -17,7 +17,6 @@ const port = process.env.PORT || 3333
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-
 app.use(routers);
 
 AppDataSource.initialize().then(async () => {
