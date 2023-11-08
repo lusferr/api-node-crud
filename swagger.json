@@ -9,7 +9,7 @@
         }
     },
     "paths": {
-        "/student/create": {
+        "/create": {
             "post": {
                 "description": "Rota para a criação de um estudante",
                 "requestBody": {
@@ -39,7 +39,7 @@
                 }
             }
         },
-        "/student/update/{id}": {
+        "/update/{id}": {
             "put": {
                 "description": "Alteração dos dados de um estudante",
                 "parameters": [
@@ -81,7 +81,7 @@
                 }
             }
         },
-        "/student/all": {
+        "/all": {
             "get": {
                 "description": "Todos os estudantes cadastrados",
                 "responses": {
@@ -101,7 +101,7 @@
                 }
             }
         },
-        "/student/getOne/{id}": {
+        "/getOne/{id}": {
             "get": {
                 "description": "Busca de um estudante por ID",
                 "parameters": [
@@ -130,7 +130,7 @@
                 }
             }
         },
-        "/student/delete/{id}": {
+        "/delete/{id}": {
             "delete": {
                 "description": "Deletar dados de um estudante por ID",
                 "parameters": [
